@@ -35,8 +35,7 @@ public class ListaBio extends AppCompatActivity {
 
     private List<LatLng> listOfBins;
     private List<String> listOfDistances;
-
-    private ListView listView;
+    
     private AlertDialog.Builder alertBuilder;
     private AlertDialog dialog;
 
@@ -47,18 +46,23 @@ public class ListaBio extends AppCompatActivity {
 
         setContentView(R.layout.activity_lista_bio);
 
-        listView = findViewById(R.id.listViewOfBins);
+        Button b = findViewById(R.id.button5);
 
-        listView.setOnItemClickListener((adapterView, view, i, l) -> {
-            alertBuilder = new AlertDialog.Builder(ListaBio.this);
-            final View popup = getLayoutInflater().inflate(R.layout.popup, null);
-            alertBuilder.setView(popup);
+        b.setOnClickListener(v -> {
+            alertBuilder = new AlertDialog.Builder(this);
+            final View popupView = getLayoutInflater().inflate(R.layout.popup, null);
+
+            alertBuilder.setView(popupView);
             dialog = alertBuilder.create();
             dialog.show();
-        }
+            Button viewById = (Button )popupView.findViewById(R.id.OKbutton);
+            viewById.setOnClickListener(a -> {
+                dialog.dismiss();
+            });
 
 
-        );
+        });
+
 
 
     }
