@@ -46,7 +46,7 @@ public class ListaBio extends AppCompatActivity {
 
         setContentView(R.layout.activity_lista_bio);
 
-        Button b = findViewById(R.id.button5);
+        Button b = findViewById(R.id.button10);
 
         b.setOnClickListener(v -> {
             alertBuilder = new AlertDialog.Builder(this);
