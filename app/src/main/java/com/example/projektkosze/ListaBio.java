@@ -2,17 +2,17 @@ package com.example.projektkosze;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.RequestFuture;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class MainActivity extends AppCompatActivity {
+public class ListaBio extends AppCompatActivity {
 
 
     LatLng bin1 = new LatLng(50.013147305246505, 20.993092480594726);
@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     private RequestQueue mQueue;
     private List<LatLng> listOfBins;
     private List<String> listOfDistances;
+
+    Button calculateRouteBtn;
+    ListView listViewOfBins;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +57,33 @@ public class MainActivity extends AppCompatActivity {
         listOfDistances = new ArrayList<>();
         mQueue = Volley.newRequestQueue(this);
 
+        calculateRouteBtn = findViewById(R.id.calcRouteBtn);
+        listViewOfBins = findViewById(R.id.listViewOfBins);
+
 
         listOfBins.add(bin1);
         listOfBins.add(bin2);
         listOfBins.add(bin3);
+
+        calculateRouteBtn = findViewById(R.id.calcRouteBtn);
+        listViewOfBins = findViewById(R.id.listViewOfBins);
+
+        final ArrayAdapter<LatLng> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, listOfBins);
+        listViewOfBins.setAdapter(adapter);
+
+
+        listViewOfBins.setOnItemClickListener((adapterView, view, position, l) -> {
+            String value=String.valueOf(adapter.getItem(position));
+            Toast.makeText(getApplicationContext(),value,Toast.LENGTH_SHORT).show();
+
+        });
+
+        calculateRouteBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, );
+            startActivity(intent);
+
+        });
 
         //String url = getRequestUrl(listOfBins.get(0), listOfBins.get(1));
 //        TaskRequestDirection taskRequestDirection = new TaskRequestDirection();

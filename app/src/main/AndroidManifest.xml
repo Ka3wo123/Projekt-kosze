@@ -30,7 +30,7 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ListaBio"
             android:exported="true"
             android:label="@string/title_activity_maps">
             <intent-filter>
