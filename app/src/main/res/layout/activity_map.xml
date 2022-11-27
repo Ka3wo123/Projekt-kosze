@@ -12,11 +12,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/round_button_shape"
-        android:text="Launch Google Maps"
+        android:text="Ustal najkrótszą trasę"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintTop_toBottomOf="@+id/rgPercentage" />
+
+    <RadioGroup
+        android:id="@+id/rgPercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMapChooseOption">
+
+        <RadioButton
+            android:id="@+id/rbAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wszystkie Kosze" />
+
+        <RadioButton
+            android:id="@+id/rb75"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kosze zapełnione w ponad 75%" />
+
+        <RadioButton
+            android:id="@+id/rb50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kosze zapełnione w ponad 50%" />
+
+        <RadioButton
+            android:id="@+id/rb25"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kosze zapełnione w ponad 25%" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvMapChooseOption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="Wybierz kosze dla których ma zostać wyznaczona najkrótsza trasa"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
