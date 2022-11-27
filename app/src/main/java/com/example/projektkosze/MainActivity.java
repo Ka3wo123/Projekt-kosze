@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -56,11 +58,20 @@ public class MainActivity extends AppCompatActivity {
         TaskRequestDirection taskRequestDirection = new TaskRequestDirection();
         taskRequestDirection.execute(url);
 
+
         jsonParse();
+
+
+        if (!listOfDistances.isEmpty()) {
+            Log.v("Lista", listOfDistances.get(0));
+        } else {
+            Log.v("Lista2", "nie ma");
+        }
+
 
     }
 
-        private void jsonParse() {
+    private void jsonParse() {
         String url = getRequestUrl(bin1, bin2);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             try {
@@ -72,14 +83,18 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject distance = legsObject.getJSONObject("distance");
                 String distanceString = distance.getString("value");
                 listOfDistances.add(distanceString);
+                response.wait();
 
 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }, Throwable::printStackTrace);
 
         mQueue.add(request);
+        Log.v("siema", listOfDistances.get(0));
 
 
     }
