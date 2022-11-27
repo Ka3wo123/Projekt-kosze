@@ -61,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
         jsonParse();
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         if (!listOfDistances.isEmpty()) {
             Log.v("Lista", listOfDistances.get(0));
@@ -83,18 +89,15 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject distance = legsObject.getJSONObject("distance");
                 String distanceString = distance.getString("value");
                 listOfDistances.add(distanceString);
-                response.wait();
 
 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }, Throwable::printStackTrace);
 
         mQueue.add(request);
-        Log.v("siema", listOfDistances.get(0));
+
 
 
     }
