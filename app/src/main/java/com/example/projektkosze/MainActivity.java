@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        listOfBins = new ArrayList<>();
+       /* listOfBins = new ArrayList<>();
         listOfDistances = new ArrayList<>();
         mQueue = Volley.newRequestQueue(this);
 
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.v("Lista2", "nie ma");
         }
-
+*/
 
     }
 
