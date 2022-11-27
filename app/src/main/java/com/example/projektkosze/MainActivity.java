@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,8 +26,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private RequestQueue mQueue;
     private List<LatLng> listOfBins;
     private List<String> listOfDistances;
-    String abc = "abv";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         jsonParse();
 
-        if(!listOfDistances.isEmpty()) {
-            Log.v("siema", listOfDistances.get(0));
-
-        } else {
-            Log.v("siema2", "nie ma nic");
-        }
-
-
-
-
-        }
+    }
 
         private void jsonParse() {
         String url = getRequestUrl(bin1, bin2);
@@ -85,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONObject distance = legsObject.getJSONObject("distance");
                 String distanceString = distance.getString("value");
-                listOfDistances.add(distance.getString("value"));
-                Log.v("lambda", listOfDistances.get(0));
+                listOfDistances.add(distanceString);
 
 
             } catch (JSONException e) {
