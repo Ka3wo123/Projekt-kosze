@@ -62,12 +62,19 @@ public class MainActivity extends AppCompatActivity {
 
         jsonParse();
 
+        if(!listOfDistances.isEmpty()) {
+            Log.v("siema", listOfDistances.get(0));
+
+        } else {
+            Log.v("siema2", "nie ma nic");
+        }
 
 
 
-    }
 
-    private void jsonParse() {
+        }
+
+        private void jsonParse() {
         String url = getRequestUrl(bin1, bin2);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             try {
@@ -78,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONObject distance = legsObject.getJSONObject("distance");
                 String distanceString = distance.getString("value");
-                listOfDistances.add(distanceString);
+                listOfDistances.add(distance.getString("value"));
+                Log.v("lambda", listOfDistances.get(0));
 
 
             } catch (JSONException e) {
