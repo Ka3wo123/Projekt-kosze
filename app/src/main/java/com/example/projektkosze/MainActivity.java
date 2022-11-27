@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.RequestFuture;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -27,7 +31,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     LatLng bin1 = new LatLng(50.013147305246505, 20.993092480594726);
     LatLng bin2 = new LatLng(50.02936749539654, 21.00135672555931);
+    LatLng bin3 = new LatLng(50.02635484551118, 21.01277878159267);
 
     private RequestQueue mQueue;
     private List<LatLng> listOfBins;
@@ -53,13 +57,23 @@ public class MainActivity extends AppCompatActivity {
 
         listOfBins.add(bin1);
         listOfBins.add(bin2);
+        listOfBins.add(bin3);
 
-        String url = getRequestUrl(listOfBins.get(0), listOfBins.get(1));
-        TaskRequestDirection taskRequestDirection = new TaskRequestDirection();
-        taskRequestDirection.execute(url);
+        //String url = getRequestUrl(listOfBins.get(0), listOfBins.get(1));
+//        TaskRequestDirection taskRequestDirection = new TaskRequestDirection();
+//        taskRequestDirection.execute(url);
+
+        for(int i = 0; i < listOfBins.size(); i++) {
+            for(int j = i+1; j < listOfBins.size(); j++) {
+                String url = getRequestUrl(listOfBins.get(i), listOfBins.get(j));
+//                TaskRequestDirection taskRequestDirection = new TaskRequestDirection();
+//                taskRequestDirection.execute(url);
+                jsonParse(url);
+                //listOfDistances.add(tv.getText().toString());
+            }
+        }
 
 
-        jsonParse();
 
 
         if (!listOfDistances.isEmpty()) {
@@ -68,11 +82,10 @@ public class MainActivity extends AppCompatActivity {
             Log.v("Lista2", "nie ma");
         }
 */
-
     }
 
-    private void jsonParse() {
-        String url = getRequestUrl(bin1, bin2);
+    private void jsonParse(String url) {
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             try {
                 JSONArray routes = response.getJSONArray("routes");
@@ -83,19 +96,14 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject distance = legsObject.getJSONObject("distance");
                 String distanceString = distance.getString("value");
                 listOfDistances.add(distanceString);
-                response.wait();
 
 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }, Throwable::printStackTrace);
 
         mQueue.add(request);
-        Log.v("siema", listOfDistances.get(0));
-
 
     }
 
