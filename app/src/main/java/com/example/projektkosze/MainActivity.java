@@ -123,10 +123,48 @@ private void jsonParse(String url, final int i, final int j) {
             e.printStackTrace();
         }
     }, Throwable::printStackTrace);
-
-    mQueue.add(request);
+    binBioParse(binArray[0]);
+    Log.v("smog",String.valueOf(binArray[0].airPolution.no2));
 
 }
+    private void binBioParse(Bin bin) {
+
+        JsonObjectRequest requestWheater = new JsonObjectRequest(Request.Method.GET, bin.getWeatherUrl(), null, response -> {
+            try {
+                JSONArray list = response.getJSONArray("list");
+                JSONObject components = list.getJSONObject(0);
+                String no2 = components.getString("no2");
+                String pm10 = components.getString("pm10");
+                String o3 = components.getString("o3");
+
+                bin.airPolution.no2 = Float.parseFloat(no2);
+                bin.airPolution.pm10 = Float.parseFloat(pm10);
+                bin.airPolution.o3 = Float.parseFloat(o3);
+                Log.v("smog1", String.valueOf(bin.airPolution.no2));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, Throwable::printStackTrace);
+        mQueue.add(requestWheater);
+    }
+//        JsonObjectRequest requestPollution = new JsonObjectRequest(Request.Method.GET, bin.getAirPolutionUrl(), null, response -> {
+//            try {
+//                JSONArray routes = response.getJSONArray("routes");
+//                JSONObject object = routes.getJSONObject(0);
+//                JSONArray legs = object.getJSONArray("legs");
+//                JSONObject legsObject = legs.getJSONObject(0);
+//
+//                JSONObject distance = legsObject.getJSONObject("distance");
+//                String distanceString = distance.getString("value");
+//
+//                //TODO przypisac dane
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }, Throwable::printStackTrace);
+//        mQueue.add(requestPollution);
+
 
 private String getRequestUrl(LatLng origin, LatLng destination) {
     String strOrigin = "origin=" + origin.latitude + "," + origin.longitude;
