@@ -14,8 +14,6 @@ public class Bin implements Parcelable {
     String binName;
     int binLevel;
     LatLng binCoord;
-    //    AirPolution airPolution = new AirPolution();
-//    WeatherClass weatherClass = new WeatherClass();
     double no2, pm10, o3;
     Random number = new Random();
 

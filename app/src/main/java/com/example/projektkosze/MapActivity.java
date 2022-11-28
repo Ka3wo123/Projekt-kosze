@@ -37,15 +37,13 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
             myBin[i] = intent.getParcelableExtra("BINLAT"+i);
         }
 
-
-        // Musimy tutaj dodac waypoints, src, dest z komiwojażera.
         TSP tsp = new TSP(sizeArray, arrayDistance);
         int ans = Integer.MAX_VALUE;
         tsp.solveTSP();
 
-        visited = tsp.getNodesIdx(); // NODES
+        visited = tsp.getNodesIdx();
 
-        Button mapButton = (Button) findViewById(R.id.button_launch_maps);
+        Button mapButton = findViewById(R.id.button_launch_maps);
         mapButton.setOnClickListener(this);
 
     }
@@ -67,28 +65,25 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case (R.id.button_launch_maps):{
-                Intent intentMap = new Intent(Intent.ACTION_VIEW);
-                LinkedList<String> waypoints = new LinkedList<>();
+        if (view.getId() == R.id.button_launch_maps) {
+            Intent intentMap = new Intent(Intent.ACTION_VIEW);
+            LinkedList<String> waypoints = new LinkedList<>();
 
-                for (Integer idx : visited){
-                    String tmp = myBin[idx].getLatitude() + "," + myBin[idx].getLongitude();
-                    waypoints.add(tmp);
-                }
-
-                String src = waypoints.getFirst().toString();
-                waypoints.removeFirst();
-
-                String dst = waypoints.getLast().toString();
-                waypoints.removeLast();
-
-                URL = createRouteURL(src, dst, waypoints);
-
-                intentMap.setData(Uri.parse(URL));
-                startActivity(intentMap);
-                break;
+            for (Integer idx : visited) {
+                String tmp = myBin[idx].getLatitude() + "," + myBin[idx].getLongitude();
+                waypoints.add(tmp);
             }
+
+            String src = waypoints.getFirst();
+            waypoints.removeFirst();
+
+            String dst = waypoints.getLast();
+            waypoints.removeLast();
+
+            URL = createRouteURL(src, dst, waypoints);
+
+            intentMap.setData(Uri.parse(URL));
+            startActivity(intentMap);
         }
     }
 }

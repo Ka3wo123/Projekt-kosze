@@ -67,11 +67,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // ---
-        // String url = binArray[0].getAirPolutionUrl();
-        //binBioParse(url);
-
-        // Glupie ale dziala ----
         final ProgressDialog progress = new ProgressDialog(this);
         progress.setTitle("Reading");
         progress.setMessage("Getting bin data...");
@@ -147,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void jsonParse(String url, final int i, final int j) {
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
@@ -171,58 +165,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-/*    private void binBioParse(String url) {
->>>>>>> feature-url_bio_read
-        JsonObjectRequest requestWheater = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
-            try {
-                JSONArray list = response.getJSONArray("list");
-                JSONObject components = list.getJSONObject(1);
-                String no2 = components.getString("no2");
-                String pm10 = components.getString("pm10");
-                String o3 = components.getString("o3");
-                Log.v("NO2", no2);
-                Log.v("PM10", pm10);
-                Log.v("o3", o3);
-
-                binArray[0].no2 = Double.parseDouble(no2);
-                binArray[0].pm10 = Double.parseDouble(pm10);
-                binArray[0].o3 = Double.parseDouble(o3);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }, Throwable::printStackTrace);
-        mQueue.add(requestWheater);
-    }
-//        JsonObjectRequest requestPollution = new JsonObjectRequest(Request.Method.GET, bin.getAirPolutionUrl(), null, response -> {
-//            try {
-//                JSONArray routes = response.getJSONArray("routes");
-//                JSONObject object = routes.getJSONObject(0);
-//                JSONArray legs = object.getJSONArray("legs");
-//                JSONObject legsObject = legs.getJSONObject(0);
-//
-//                JSONObject distance = legsObject.getJSONObject("distance");
-//                String distanceString = distance.getString("value");
-//
-//                //TODO przypisac dane
-//
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }, Throwable::printStackTrace);
-//        mQueue.add(requestPollution);
-
-//
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }, Throwable::printStackTrace);
-//
-//        mQueue.add(request);
-//
-//    }*/
-
-
     private String getRequestUrl(LatLng origin, LatLng destination) {
         String strOrigin = "origin=" + origin.latitude + "," + origin.longitude;
         String strDestination = "destination=" + destination.latitude + "," + destination.longitude;
@@ -231,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
         String output = "json";
         return "https://maps.googleapis.com/maps/api/directions/" + output + "?" + params + "&key=AIzaSyBLLb7YhZ4vUvBwmz5Azg7CEVRxAVWdUN4";
     }
-
 
 }
 
