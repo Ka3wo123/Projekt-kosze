@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ListaProgress"
-    android:background="@color/midblue"
+    android:background="@color/aquamarine"
     >
 
 
@@ -20,7 +20,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="34sp"
-        android:textColor="@color/yellow"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,11 +44,12 @@
                 android:id="@+id/buttonBio"
                 android:layout_width="260dp"
                 android:layout_height="70dp"
-                android:backgroundTint="@color/blue"
+                android:backgroundTint="@color/darkgreen"
                 android:gravity="center"
                 android:onClick="goToListaBio"
-                android:text="Dane Biometryczne"
-                android:textColor="@color/yellow"
+                android:text="Dane Biometeorologiczne
+"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:cornerRadius="50dp" />
         </TableRow>
@@ -61,10 +62,10 @@
                 android:id="@+id/buttonProgress"
                 android:layout_width="350dp"
                 android:layout_height="70dp"
-                android:backgroundTint="@color/blue"
+                android:backgroundTint="@color/darkgreen"
                 android:onClick="goToListaProgress"
                 android:text="Poziom zapełnienia śmietników"
-                android:textColor="@color/yellow"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:cornerRadius="50dp" />
         </TableRow>
@@ -77,10 +78,10 @@
                 android:id="@+id/buttonNavigation"
                 android:layout_width="260dp"
                 android:layout_height="70dp"
-                android:backgroundTint="@color/blue"
+                android:backgroundTint="@color/darkgreen"
                 android:onClick="goToMapActivity"
                 android:text="Wyznacz trasę odbioru odpadów"
-                android:textColor="@color/yellow"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:cornerRadius="50dp" />
         </TableRow>

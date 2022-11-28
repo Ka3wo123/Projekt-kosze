@@ -31,7 +31,7 @@ public class Bin implements Parcelable {
     public String getWeatherUrl() {
         return "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=a7411493638501a02081b68b7092f328";
     }
-
+    
     public String getAirPolutionUrl() {
         return "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + latitude + "&lon=" + longitude + "&appid=a7411493638501a02081b68b7092f328";
     }
