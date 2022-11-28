@@ -27,15 +27,6 @@ public class Schedule extends AppCompatActivity {
         calendar.set(Calendar.YEAR, 2022);
         calendar.set(Calendar.MONTH, Calendar.NOVEMBER);
         calendar.set(Calendar.DAY_OF_MONTH, 29);
-
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-
-                String date = day + "-" + month+1 + "-" + year;
-                textView.setText(date);
-
-            }
-        });
+        
     }
 }

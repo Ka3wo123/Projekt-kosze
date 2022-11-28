@@ -1,0 +1,14 @@
+D:\pobrane\Trash_v1\ToF_3DCam\device/LPC55S69_cm33_core0.h:31212:24:Chip_GetVersion	16	static
+D:\pobrane\Trash_v1\ToF_3DCam\drivers/fsl_clock.h:983:20:CLOCK_EnableClock	24	static
+D:\pobrane\Trash_v1\ToF_3DCam\drivers/fsl_iocon.h:182:22:IOCON_PinMuxSet	24	static
+../board/pin_mux.c:36:6:BOARD_InitBootPins	8	static
+../board/pin_mux.c:65:6:BOARD_InitDEBUG_UARTPins	16	static
+../board/pin_mux.c:124:6:BOARD_InitSWD_DEBUGPins	32	static
+../board/pin_mux.c:257:6:BOARD_InitUSBPins	32	static
+../board/pin_mux.c:361:6:BOARD_InitLEDsPins	32	static
+../board/pin_mux.c:460:6:BOARD_InitBUTTONsPins	40	static
+../board/pin_mux.c:597:6:BOARD_InitI2SPins	48	static
+../board/pin_mux.c:763:6:BOARD_InitACCELPins	24	static
+../board/pin_mux.c:849:6:BOARD_ToFCamPins	24	static
+../board/pin_mux.c:972:6:MWM_InitPins	8	static
+../board/pin_mux.c:1025:6:BOARD_InitPMODPins	8	static

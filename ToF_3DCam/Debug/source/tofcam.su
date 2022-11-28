@@ -1,0 +1,5 @@
+D:\pobrane\Trash_v1\ToF_3DCam\drivers/fsl_gpio.h:153:20:GPIO_PinWrite	24	static
+../source/tofcam.c:87:6:main_task	160	static
+../source/tofcam.c:134:6:delay_ms	24	static
+../source/tofcam.c:139:6:cbToF_Ready	24	static
+../source/tofcam.c:157:5:main	16	static
