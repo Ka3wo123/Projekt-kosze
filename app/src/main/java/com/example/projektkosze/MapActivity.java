@@ -15,20 +15,26 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
     // "https://www.google.com/maps/dir/?api=1&origin=&destination=&travelmode=driving&waypoints=%7C"
 
     private String URL;
+    LinkedList<String> waypoints = new LinkedList<>();
+    int sizeArray;
+    String [] arrayDistance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        Intent intent = getIntent();
 
-        // Testing initial points
-        LinkedList<String> waypoints = new LinkedList<>();
+        arrayDistance = intent.getStringArrayExtra("MATRIXDISTANCE");
+        
+        // Musimy tutaj dodac waypoints, src, dest z komiwojażera.
 
-        String origin = "50.01775241020009, 20.98671753344372";
-        String dest = "50.01445338043756, 21.01438738781465";
-        waypoints.add("50.01768361637082, 21.00522672993565");
-        waypoints.add("50.0143074088555, 21.012408714218996");
+        Button mapButton = (Button) findViewById(R.id.button_launch_maps);
+        mapButton.setOnClickListener(this);
 
+    }
+
+    private String createRouteURL(String origin, String dest, LinkedList<String> waypoints){
         URL = "https://www.google.com/maps/dir/?api=1&origin="+origin+"&destination=" +
                 dest + "&travelmode=driving&waypoints=";
 
@@ -40,15 +46,7 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
             buffer.append(point).append("%7C");
         }
 
-        URL = buffer.toString();
-
-        Button mapButton = (Button) findViewById(R.id.button_launch_maps);
-        mapButton.setOnClickListener(this);
-
-    }
-
-    private String createRouteURL(){
-        return null;
+        return buffer.toString();
     }
 
     @Override

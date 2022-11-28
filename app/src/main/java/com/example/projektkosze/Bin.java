@@ -1,16 +1,32 @@
 package com.example.projektkosze;
 
-public class Bin {
-    public Bin(Double latitude, Double longtitude, String nazwa) {
-        this.latitude = latitude;
-        this.longtitude = longtitude;
-        this.nazwa = nazwa;
+import com.google.android.gms.maps.model.LatLng;
 
+public class Bin {
+    Double latitude;
+    Double longitude;
+    int binLevel;
+    String binName;
+
+    LatLng binCoord;
+
+    public Bin(Double latitude, Double longtitude, String name) {
+        this.latitude = latitude;
+        this.longitude = longtitude;
+        this.binName = name;
+
+        binCoord = new LatLng(latitude, longitude);
     }
 
-    Double latitude;
-    Double longtitude;
-    int zapełnienie;
-    String nazwa;
+    public Double getLatitude() {
+        return latitude;
+    }
 
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public LatLng getBinCoord() {
+        return binCoord;
+    }
 }
