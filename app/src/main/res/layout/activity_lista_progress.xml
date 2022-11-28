@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/aquamarine"
+    android:background="@color/darkblue"
     tools:context=".MainActivity">
 
     <TableLayout
@@ -160,16 +160,17 @@
         android:id="@+id/refresh"
         android:layout_width="117dp"
         android:layout_height="124dp"
-        android:backgroundTint="@color/darkgreen"
+        android:backgroundTint="@color/yellow"
         android:text="Odśwież dane"
+        android:textColor="@color/darkblue"
         android:textSize="16sp"
         app:cornerRadius="100dp"
-        android:textColor="@color/white"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+        app:layout_constraintVertical_bias="0.502" />
 
     <TextView
         android:id="@+id/textView3"
@@ -177,7 +178,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Adres kosza                Poziom zapełnienia"
-        android:textColor="@color/white"
+        android:textColor="@color/yellow"
 
         android:textSize="20sp"
         android:textStyle="bold"

@@ -3,11 +3,11 @@
     <style name="Theme.ProjektKosze" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/midblue</item>
-        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/darkblue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/yellow</item>
-        <item name="colorSecondaryVariant">@color/darkyellow</item>
+        <item name="colorSecondaryVariant">@color/yellow</item>
         <item name="colorOnSecondary">@color/black</item>       
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>

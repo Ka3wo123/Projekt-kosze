@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MapActivity"
-    android:background="@color/aquamarine">
+    android:background="@color/darkblue">
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -13,16 +13,18 @@
         android:layout_width="300dp"
         android:layout_height="70dp"
         android:background="@drawable/round_button_shape"
+        android:backgroundTint="@color/yellow"
         android:gravity="center"
         android:text="Ustal najkrótszą trasę i uruchom nawigację"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/darkgreen"
+        android:textColor="@color/darkblue"
         android:textSize="18sp"
         app:cornerRadius="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgPercentage" />
+        app:layout_constraintTop_toBottomOf="@+id/rgPercentage"
+        app:layout_constraintVertical_bias="0.508" />
 
     <RadioGroup
         android:id="@+id/rgPercentage"
@@ -38,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Wszystkie Kosze"
-            android:textColor="@color/white"
+            android:textColor="@color/yellow"
             android:textSize="20sp" />
 
         <RadioButton
@@ -46,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Kosze zapełnione w ponad 75%"
-            android:textColor="@color/white"
+            android:textColor="@color/yellow"
             android:textSize="20sp" />
 
         <RadioButton
@@ -54,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Kosze zapełnione w ponad 50%"
-            android:textColor="@color/white"
+            android:textColor="@color/yellow"
             android:textSize="20sp" />
 
         <RadioButton
@@ -62,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Kosze zapełnione w ponad 25%"
-            android:textColor="@color/white"
+            android:textColor="@color/yellow"
             android:textSize="20sp" />
     </RadioGroup>
 
@@ -75,7 +77,7 @@
         android:layout_marginEnd="32dp"
         android:gravity="center"
         android:text="Wybierz kosze dla których ma zostać wyznaczona najkrótsza trasa"
-        android:textColor="@color/white"
+        android:textColor="@color/yellow"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

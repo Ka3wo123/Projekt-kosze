@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="darkblue">#757575 </color>
-    <color name="midblue">#9E9E9E</color>
-    <color name="blue">#00509d</color>
-    <color name="darkyellow">#fdc500</color>
-    <color name="yellow">#42A5F5</color>
+    <color name="darkblue">#245A9F </color>
+    <color name="yellow">#FFED00</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    
+    <color name="midblue">#aaaaaaaa</color>
     <color name="aquamarine">#4BD2C0</color>
     <color name="darkgreen">#17B091</color>
     <color name="green800">#48C394</color>
