@@ -29,12 +29,12 @@ public class ListaBio extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        binInf1 = findViewById(R.id.binInfo1);
-        binInf2 = findViewById(R.id.binInfo2);
-        binInf3 = findViewById(R.id.binInfo3);
-        binInf4 = findViewById(R.id.binInfo4);
-        binInf5 = findViewById(R.id.binInfo5);
-        binInf6 = findViewById(R.id.binInfo6);
+        binInf1 = findViewById(R.id.binProgress1);
+        binInf2 = findViewById(R.id.binProgress2);
+        binInf3 = findViewById(R.id.binProgress3);
+        binInf4 = findViewById(R.id.binProgress4);
+        binInf5 = findViewById(R.id.binProgress5);
+        binInf6 = findViewById(R.id.binProgress6);
 
 
 

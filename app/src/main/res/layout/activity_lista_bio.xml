@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/binInfo1"
+            android:id="@+id/binProgress1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="20sp"
@@ -31,7 +31,7 @@
             android:text="Kosz1" />
 
         <TextView
-            android:id="@+id/binInfo2"
+            android:id="@+id/binProgress2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="20sp"
@@ -41,7 +41,7 @@
             android:text="Kosz2" />
 
         <TextView
-            android:id="@+id/binInfo3"
+            android:id="@+id/binProgress3"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="20sp"
@@ -51,7 +51,7 @@
             android:text="Kosz3" />
 
         <TextView
-            android:id="@+id/binInfo4"
+            android:id="@+id/binProgress4"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="20sp"
@@ -61,7 +61,7 @@
             android:text="Kosz4" />
 
         <TextView
-            android:id="@+id/binInfo5"
+            android:id="@+id/binProgress5"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="20sp"
@@ -72,7 +72,7 @@
 
 
         <TextView
-            android:id="@+id/binInfo6"
+            android:id="@+id/binProgress6"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="20sp"

@@ -155,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void binBioParse(String url) {
-        Toast.makeText(this, "BIN", Toast.LENGTH_SHORT).show();
 
         JsonObjectRequest requestWheater = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             try {
