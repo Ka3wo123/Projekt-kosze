@@ -5,7 +5,8 @@
     android:id="@+id/activity_lista_bio"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListaBio">
+    tools:context=".ListaBio"
+    android:background="@color/midblue">
 
     <ListView
         android:id="@+id/listViewBins"

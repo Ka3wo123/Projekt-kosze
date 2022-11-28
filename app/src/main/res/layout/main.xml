@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ListaProgress"
-    android:backgroundTint="@color/blue">
+    android:background="@color/midblue"
+    >
+
 
     <TextView
         android:id="@+id/title"
@@ -18,6 +20,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="34sp"
+        android:textColor="@color/yellow"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +29,7 @@
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="240dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,10 +44,13 @@
                 android:id="@+id/buttonBio"
                 android:layout_width="260dp"
                 android:layout_height="70dp"
+                android:backgroundTint="@color/blue"
                 android:gravity="center"
                 android:onClick="goToListaBio"
                 android:text="Dane Biometryczne"
-                android:textSize="20sp" />
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                app:cornerRadius="50dp" />
         </TableRow>
 
         <TableRow
@@ -55,9 +61,12 @@
                 android:id="@+id/buttonProgress"
                 android:layout_width="350dp"
                 android:layout_height="70dp"
+                android:backgroundTint="@color/blue"
                 android:onClick="goToListaProgress"
                 android:text="Poziom zapełnienia śmietników"
-                android:textSize="20sp" />
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                app:cornerRadius="50dp" />
         </TableRow>
 
         <TableRow
@@ -68,9 +77,12 @@
                 android:id="@+id/buttonNavigation"
                 android:layout_width="260dp"
                 android:layout_height="70dp"
+                android:backgroundTint="@color/blue"
                 android:onClick="goToMapActivity"
                 android:text="Wyznacz trasę odbioru odpadów"
-                android:textSize="20sp" />
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                app:cornerRadius="50dp" />
         </TableRow>
 
     </TableLayout>
