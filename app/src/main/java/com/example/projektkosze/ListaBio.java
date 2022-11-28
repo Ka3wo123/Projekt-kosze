@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.view.View;
 
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -27,12 +28,10 @@ public class ListaBio extends AppCompatActivity {
     private AlertDialog.Builder alertBuilder;
     private AlertDialog dialog;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_bio);
-
 
         final List<LatLng> listOfBins = new ArrayList<>();
         listOfBins.add(bin1);

@@ -2,6 +2,8 @@ package com.example.projektkosze;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.Random;
+
 public class Bin {
     Double latitude;
     Double longitude;
@@ -10,12 +12,13 @@ public class Bin {
     LatLng binCoord;
     AirPolution airPolution = new AirPolution();
     WeatherClass weatherClass = new WeatherClass();
-
+    Random number = new Random();
 
     public Bin(Double latitude, Double longtitude, String name) {
         this.latitude = latitude;
         this.longitude = longtitude;
         this.binName = name;
+        binLevel = number.nextInt(100);
 
         binCoord = new LatLng(latitude, longitude);
     }
