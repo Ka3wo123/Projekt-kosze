@@ -25,12 +25,13 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private Bin[] binArray = {
-            new Bin(50.01359836197344, 20.976235455538657, "Szkotnik 9"),
-            new Bin(50.01483980669955, 20.978435043775665, "Krasińskiego 52"),
-            new Bin(50.0114913956889, 20.97923906912922, "Mościckiego 17"),
-            new Bin(50.012679696442845, 20.978370497052286, "Krasińskiego 28"),
-            new Bin(50.011889025912794, 20.981977306136912, "Sowińskiego 6"),
-            new Bin(50.01248492643192, 20.98250118246215, "Nowy Świat 14")};
+            new Bin(49.99875191178734, 20.99433534037258, "Zuchów 52"),
+            new Bin(50.007863015218284, 20.97983693647739, "MPGiK"),
+            new Bin(49.99864825315144, 20.995590540257002, "Zamenhofa 41"),
+            new Bin(49.99720316765519, 20.996658313375047, "Podzamcze 17"),
+            new Bin(49.997547400196744, 20.9983932558752, "Podzamcze 29"),
+            new Bin(49.99750064716965, 20.998949885944505, "Al. Tarnowskich 32"),
+            };
 
     // Zakladamy wiecej niz 3 kosze zawsze
     // Wzor na ilosc polaczen w grafie binArray.length + (binArray.length * (binArray.length-3)) / 2
@@ -48,15 +49,15 @@ public class MainActivity extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
 
         // Initializing array to "0"
-        for (int i = 0; i < binArray.length; i++){
-            for (int j = 0; j < binArray.length; j++){
+        for (int i = 0; i < binArray.length; i++) {
+            for (int j = 0; j < binArray.length; j++) {
                 arrayOfDistances[j + binArray.length * i] = "0";
             }
         }
 
         // Create URL and
-        for (int i = 0; i < binArray.length; i++){
-            for (int j = 0; j < binArray.length; j++){
+        for (int i = 0; i < binArray.length; i++) {
+            for (int j = 0; j < binArray.length; j++) {
                 String url = getRequestUrl(binArray[i].getBinCoord(), binArray[j].getBinCoord());
                 jsonParse(url, i, j);
             }
@@ -82,60 +83,69 @@ public class MainActivity extends AppCompatActivity {
         // ---
     }
 
-    public void goToListaBio(View view){
+    public void goToListaBio(View view) {
         Intent intent = new Intent(this, ListaBio.class);
+        intent.putExtra("MATRIXDISTANCE", arrayOfDistances);
+        intent.putExtra("ARRAYLEN", binArray.length);
+
+        // Putting array as single elements
+        for (int i = 0; i < binArray.length; i++) {
+            intent.putExtra("BINLAT" + i, binArray[i]);
+        }
         startActivity(intent);
     }
-    public void goToListaProgress(View view){
+
+    public void goToListaProgress(View view) {
         Intent intent = new Intent(this, ListaProgress.class);
         startActivity(intent);
     }
-    public void goToMapActivity(View view){
+
+    public void goToMapActivity(View view) {
         Intent intent = new Intent(this, MapActivity.class);
 
         intent.putExtra("MATRIXDISTANCE", arrayOfDistances);
         intent.putExtra("ARRAYLEN", binArray.length);
 
         // Putting array as single elements
-        for (int i = 0; i < binArray.length; i++){
-            intent.putExtra("BINLAT"+i, binArray[i]);
+        for (int i = 0; i < binArray.length; i++) {
+            intent.putExtra("BINLAT" + i, binArray[i]);
         }
 
 
         startActivity(intent);
     }
 
-private void jsonParse(String url, final int i, final int j) {
+    private void jsonParse(String url, final int i, final int j) {
 
-    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
-        try {
-            JSONArray routes = response.getJSONArray("routes");
-            JSONObject object = routes.getJSONObject(0);
-            JSONArray legs = object.getJSONArray("legs");
-            JSONObject legsObject = legs.getJSONObject(0);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
+            try {
+                JSONArray routes = response.getJSONArray("routes");
+                JSONObject object = routes.getJSONObject(0);
+                JSONArray legs = object.getJSONArray("legs");
+                JSONObject legsObject = legs.getJSONObject(0);
 
-            JSONObject distance = legsObject.getJSONObject("distance");
-            String distanceString = distance.getString("value");
+                JSONObject distance = legsObject.getJSONObject("distance");
+                String distanceString = distance.getString("value");
 
-            arrayOfDistances[j + binArray.length * i] = distanceString;
+                arrayOfDistances[j + binArray.length * i] = distanceString;
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }, Throwable::printStackTrace);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, Throwable::printStackTrace);
 
-    mQueue.add(request);
+        mQueue.add(request);
 
-}
+    }
 
-private String getRequestUrl(LatLng origin, LatLng destination) {
-    String strOrigin = "origin=" + origin.latitude + "," + origin.longitude;
-    String strDestination = "destination=" + destination.latitude + "," + destination.longitude;
-    String mode = "mode=driving";
-    String params = strOrigin + "&" + strDestination + "&" + mode;
-    String output = "json";
-    return "https://maps.googleapis.com/maps/api/directions/" + output + "?" + params + "&key=AIzaSyBLLb7YhZ4vUvBwmz5Azg7CEVRxAVWdUN4";
-}
+    private String getRequestUrl(LatLng origin, LatLng destination) {
+        String strOrigin = "origin=" + origin.latitude + "," + origin.longitude;
+        String strDestination = "destination=" + destination.latitude + "," + destination.longitude;
+        String mode = "mode=driving";
+        String params = strOrigin + "&" + strDestination + "&" + mode;
+        String output = "json";
+        return "https://maps.googleapis.com/maps/api/directions/" + output + "?" + params + "&key=AIzaSyBLLb7YhZ4vUvBwmz5Azg7CEVRxAVWdUN4";
+    }
 
 
 }
