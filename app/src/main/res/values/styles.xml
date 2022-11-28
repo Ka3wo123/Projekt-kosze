@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="bioList">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">15sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:layout_marginTop">0sp</item>
+        <item name="android:layout_marginBottom">0sp</item>
+        <item name="android:background">@color/darkblue</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>
