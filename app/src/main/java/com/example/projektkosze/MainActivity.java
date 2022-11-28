@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 
@@ -26,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private Bin[] binArray = {
             new Bin(50.01359836197344, 20.976235455538657, "Szkotnik 9"),
             new Bin(50.01483980669955, 20.978435043775665, "Krasińskiego 52"),
-            new Bin(50.012679696442845, 20.978370497052286, "Krasińskiego 28"),
             new Bin(50.0114913956889, 20.97923906912922, "Mościckiego 17"),
+            new Bin(50.012679696442845, 20.978370497052286, "Krasińskiego 28"),
             new Bin(50.011889025912794, 20.981977306136912, "Sowińskiego 6"),
             new Bin(50.01248492643192, 20.98250118246215, "Nowy Świat 14")};
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Create URL and
         for (int i = 0; i < binArray.length; i++){
-            for (int j = i+1; j < binArray.length; j++){
+            for (int j = 0; j < binArray.length; j++){
                 String url = getRequestUrl(binArray[i].getBinCoord(), binArray[j].getBinCoord());
                 jsonParse(url, i, j);
             }
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         Handler pdCanceller = new Handler();
-        pdCanceller.postDelayed(progressRunnable, 7000);
+        pdCanceller.postDelayed(progressRunnable, 5000);
 
         // ---
     }
@@ -93,6 +94,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MapActivity.class);
 
         intent.putExtra("MATRIXDISTANCE", arrayOfDistances);
+        intent.putExtra("ARRAYLEN", binArray.length);
+
+        // Putting array as single elements
+        for (int i = 0; i < binArray.length; i++){
+            intent.putExtra("BINLAT"+i, binArray[i]);
+        }
+
 
         startActivity(intent);
     }
