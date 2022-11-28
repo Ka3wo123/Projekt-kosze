@@ -2,32 +2,37 @@ package com.example.projektkosze;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import java.util.Random;
+
 import com.google.android.gms.maps.model.LatLng;
 
 public class Bin implements Parcelable {
 
-    Double latitude;
-    Double longitude;
+    double latitude;
+    double longitude;
     String binName;
     int binLevel;
     LatLng binCoord;
-    AirPolution airPolution = new AirPolution();
-    WeatherClass weatherClass = new WeatherClass();
+    //    AirPolution airPolution = new AirPolution();
+//    WeatherClass weatherClass = new WeatherClass();
+    double no2, pm10, o3;
     Random number = new Random();
 
-    public Bin(Double latitude, Double longtitude, String name) {
+    public Bin(double latitude, double longtitude, String name) {
         this.latitude = latitude;
         this.longitude = longtitude;
         this.binName = name;
         binLevel = number.nextInt(100);
 
-        binCoord = new LatLng(latitude, longitude);
+        binCoord = new LatLng(latitude, longtitude);
     }
-    public String getWeatherUrl(){
+
+    public String getWeatherUrl() {
         return "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=a7411493638501a02081b68b7092f328";
     }
-    public String getAirPolutionUrl(){
+
+    public String getAirPolutionUrl() {
         return "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + latitude + "&lon=" + longitude + "&appid=a7411493638501a02081b68b7092f328";
     }
 

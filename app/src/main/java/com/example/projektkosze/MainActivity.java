@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             new Bin(49.99720316765519, 20.996658313375047, "Podzamcze 17"),
             new Bin(49.997547400196744, 20.9983932558752, "Podzamcze 29"),
             new Bin(49.99750064716965, 20.998949885944505, "Al. Tarnowskich 32"),
-            };
+    };
 
     // Zakladamy wiecej niz 3 kosze zawsze
     // Wzor na ilosc polaczen w grafie binArray.length + (binArray.length * (binArray.length-3)) / 2
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     // For URL request
     private RequestQueue mQueue;
+    private RequestQueue mQueueBio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 jsonParse(url, i, j);
             }
         }
-        binBioParse(binArray[0]);
-        Log.v("smog",String.valueOf(binArray[0].airPolution.no2));
+        Log.v("smog", String.valueOf(binArray[0].no2));
         // Debilizm ale dziala ----
         final ProgressDialog progress = new ProgressDialog(this);
         progress.setTitle("Reading");
@@ -83,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         pdCanceller.postDelayed(progressRunnable, 5000);
 
         // ---
+        String url = binArray[0].getAirPolutionUrl();
+        binBioParse(url);
     }
 
     public void goToListaBio(View view) {
@@ -107,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("ARRAYLEN", binArray.length);
 
         // Putting array as single elements
-        for (int i = 0; i < binArray.length; i++){
-            intent.putExtra("BINLAT"+i, binArray[i]);
+        for (int i = 0; i < binArray.length; i++) {
+            intent.putExtra("BINLAT" + i, binArray[i]);
         }
         startActivity(intent);
     }
@@ -143,27 +146,32 @@ public class MainActivity extends AppCompatActivity {
                 arrayOfDistances[j + binArray.length * i] = distanceString;
 
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }, Throwable::printStackTrace);
-    mQueue.add(request);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, Throwable::printStackTrace);
+        mQueue.add(request);
 
-}
-    private void binBioParse(Bin bin) {
+    }
 
-        JsonObjectRequest requestWheater = new JsonObjectRequest(Request.Method.GET, bin.getWeatherUrl(), null, response -> {
+    private void binBioParse(String url) {
+        Toast.makeText(this, "BIN", Toast.LENGTH_SHORT).show();
+
+        JsonObjectRequest requestWheater = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             try {
                 JSONArray list = response.getJSONArray("list");
-                JSONObject components = list.getJSONObject(0);
+                JSONObject components = list.getJSONObject(1);
                 String no2 = components.getString("no2");
                 String pm10 = components.getString("pm10");
                 String o3 = components.getString("o3");
+                Log.v("NO2", no2);
+                Log.v("PM10", pm10);
+                Log.v("o3", o3);
 
-                bin.airPolution.no2 = Float.parseFloat(no2);
-                bin.airPolution.pm10 = Float.parseFloat(pm10);
-                bin.airPolution.o3 = Float.parseFloat(o3);
-                Log.v("smog1", "dupa");
+                binArray[0].no2 = Double.parseDouble(no2);
+                binArray[0].pm10 = Double.parseDouble(pm10);
+                binArray[0].o3 = Double.parseDouble(o3);
+                Log.v("smog1", String.valueOf(binArray[0].no2));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
