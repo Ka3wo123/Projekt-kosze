@@ -29,11 +29,11 @@ public class Bin implements Parcelable {
     }
 
     public String getWeatherUrl() {
-        return "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=a7411493638501a02081b68b7092f328";
+        return "https://api.openweathermap.org/data/2.5/weather?lat=" + Double.toString(latitude) + "&lon=" + Double.toString(longitude) + "&appid=b08fbe438e5185b224865e9f8dd84222";
     }
     
     public String getAirPolutionUrl() {
-        return "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + latitude + "&lon=" + longitude + "&appid=a7411493638501a02081b68b7092f328";
+        return "https://api.openweathermap.org/data/2.5/air_pollution?lat=" + Double.toString(latitude) + "&lon=" + Double.toString(longitude) + "&appid=b08fbe438e5185b224865e9f8dd84222";
     }
 
     private Bin(Parcel in) {

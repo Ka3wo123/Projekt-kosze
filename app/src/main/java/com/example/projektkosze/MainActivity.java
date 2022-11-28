@@ -13,7 +13,10 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -26,7 +29,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private Bin[] binArray = {
-            new Bin(49.99875191178734, 20.99433534037258, "Zuchów 52"),
+            new Bin(50.023753659606214, 20.98423180440173, "Hackathon"),
             new Bin(50.007863015218284, 20.97983693647739, "MPGiK"),
             new Bin(49.99864825315144, 20.995590540257002, "Zamenhofa 41"),
             new Bin(49.99720316765519, 20.996658313375047, "Podzamcze 17"),
@@ -37,11 +40,9 @@ public class MainActivity extends AppCompatActivity {
     // Zakladamy wiecej niz 3 kosze zawsze
     // Wzor na ilosc polaczen w grafie binArray.length + (binArray.length * (binArray.length-3)) / 2
     private String[] arrayOfDistances = new String[binArray.length * binArray.length];
-    private LatLng[] arrayOfBinsLocation = new LatLng[binArray.length];
 
     // For URL request
     private RequestQueue mQueue;
-    private RequestQueue mQueueBio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +66,12 @@ public class MainActivity extends AppCompatActivity {
                 jsonParse(url, i, j);
             }
         }
-        Log.v("smog", String.valueOf(binArray[0].no2));
-        // Debilizm ale dziala ----
+
+        // ---
+        // String url = binArray[0].getAirPolutionUrl();
+        //binBioParse(url);
+
+        // Glupie ale dziala ----
         final ProgressDialog progress = new ProgressDialog(this);
         progress.setTitle("Reading");
         progress.setMessage("Getting bin data...");
@@ -83,9 +88,6 @@ public class MainActivity extends AppCompatActivity {
         Handler pdCanceller = new Handler();
         pdCanceller.postDelayed(progressRunnable, 5000);
 
-        // ---
-        String url = binArray[0].getAirPolutionUrl();
-        binBioParse(url);
     }
 
     public void goToListaBio(View view) {
@@ -144,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+
     private void jsonParse(String url, final int i, final int j) {
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
@@ -167,8 +171,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void binBioParse(String url) {
-
+/*    private void binBioParse(String url) {
+>>>>>>> feature-url_bio_read
         JsonObjectRequest requestWheater = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             try {
                 JSONArray list = response.getJSONArray("list");
@@ -183,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 binArray[0].no2 = Double.parseDouble(no2);
                 binArray[0].pm10 = Double.parseDouble(pm10);
                 binArray[0].o3 = Double.parseDouble(o3);
-                Log.v("smog1", String.valueOf(binArray[0].no2));
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -216,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
 //
 //        mQueue.add(request);
 //
-//    }
+//    }*/
 
 
     private String getRequestUrl(LatLng origin, LatLng destination) {
