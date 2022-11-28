@@ -54,14 +54,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Create URL and
+         //Create URL and
         for (int i = 0; i < binArray.length; i++){
             for (int j = 0; j < binArray.length; j++){
                 String url = getRequestUrl(binArray[i].getBinCoord(), binArray[j].getBinCoord());
                 jsonParse(url, i, j);
             }
         }
-
+        binBioParse(binArray[0]);
+        Log.v("smog",String.valueOf(binArray[0].airPolution.no2));
         // Debilizm ale dziala ----
         final ProgressDialog progress = new ProgressDialog(this);
         progress.setTitle("Reading");
@@ -84,10 +85,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToListaBio(View view){
         Intent intent = new Intent(this, ListaBio.class);
+
+        intent.putExtra("MATRIXDISTANCE", arrayOfDistances);
+        intent.putExtra("ARRAYLEN", binArray.length);
+
+        // Putting array as single elements
+        for (int i = 0; i < binArray.length; i++){
+            intent.putExtra("BINLAT"+i, binArray[i]);
+        }
         startActivity(intent);
     }
     public void goToListaProgress(View view){
         Intent intent = new Intent(this, ListaProgress.class);
+
+        intent.putExtra("MATRIXDISTANCE", arrayOfDistances);
+        intent.putExtra("ARRAYLEN", binArray.length);
+
+        // Putting array as single elements
+        for (int i = 0; i < binArray.length; i++){
+            intent.putExtra("BINLAT"+i, binArray[i]);
+        }
         startActivity(intent);
     }
     public void goToMapActivity(View view){
@@ -123,8 +140,7 @@ private void jsonParse(String url, final int i, final int j) {
             e.printStackTrace();
         }
     }, Throwable::printStackTrace);
-    binBioParse(binArray[0]);
-    Log.v("smog",String.valueOf(binArray[0].airPolution.no2));
+    mQueue.add(request);
 
 }
     private void binBioParse(Bin bin) {
@@ -140,7 +156,7 @@ private void jsonParse(String url, final int i, final int j) {
                 bin.airPolution.no2 = Float.parseFloat(no2);
                 bin.airPolution.pm10 = Float.parseFloat(pm10);
                 bin.airPolution.o3 = Float.parseFloat(o3);
-                Log.v("smog1", String.valueOf(bin.airPolution.no2));
+                Log.v("smog1", "dupa");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
