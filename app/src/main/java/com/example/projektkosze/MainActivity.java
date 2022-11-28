@@ -116,6 +116,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToCallendar(View view) {
+        Intent intent = new Intent(this, Schedule.class);
+
+        intent.putExtra("MATRIXDISTANCE", arrayOfDistances);
+        intent.putExtra("ARRAYLEN", binArray.length);
+
+        // Putting array as single elements
+        for (int i = 0; i < binArray.length; i++) {
+            intent.putExtra("BINLAT" + i, binArray[i]);
+        }
+        startActivity(intent);
+    }
+
     public void goToMapActivity(View view) {
         Intent intent = new Intent(this, MapActivity.class);
 

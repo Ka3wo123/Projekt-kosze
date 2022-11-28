@@ -28,7 +28,7 @@
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
-        android:layout_height="240dp"
+        android:layout_height="310dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +82,22 @@
                 android:text="Wyznacz trasę odbioru odpadów"
                 android:textColor="@color/darkblue"
                 android:textSize="20sp"
+                app:cornerRadius="50dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonHarmonogram"
+                android:layout_width="260dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/yellow"
+                android:text="Harmonogram wywozu śmieci"
+                android:textColor="@color/darkblue"
+                android:textSize="20sp"
+                android:onClick="goToCallendar"
                 app:cornerRadius="50dp" />
         </TableRow>
 
