@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_lista_bio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/midblue"
+    android:padding="4dp"
+    tools:context=".ListaBio">
+
+    <TableLayout
+        android:id="@+id/linearLayoutContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bioTitle1"
+                style="@style/bioList"
+                android:layout_span="3"
+                android:text="TEST" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin1D1"
+                style="@style/bioList"
+                android:text="bin1D1" />
+
+            <TextView
+                android:id="@+id/bin1D2"
+                style="@style/bioList"
+                android:text="bin1D2" />
+
+            <TextView
+                android:id="@+id/bin1D3"
+                style="@style/bioList"
+                android:text="bin1D3" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin1D4"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="NO2: 10.2" />
+
+            <TextView
+                android:id="@+id/bin1D5"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="O3: 39.7" />
+
+            <TextView
+                android:id="@+id/bin1D6"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="PM10: 10.2" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bioTitle2"
+                style="@style/bioList"
+                android:layout_span="3"
+                android:text="TEST2" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin2D1"
+                style="@style/bioList"
+                android:text="T: 5.2C" />
+
+            <TextView
+                android:id="@+id/bin2D2"
+                style="@style/bioList"
+                android:text="HPa: 1002" />
+
+            <TextView
+                android:id="@+id/bin2D3"
+                style="@style/bioList"
+                android:text="H.: 45%" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin2D4"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="NO2: 9.9" />
+
+            <TextView
+                android:id="@+id/bin2D5"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="O3: 35.2" />
+
+            <TextView
+                android:id="@+id/bin2D6"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="PM10: 10.0" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bioTitle3"
+                style="@style/bioList"
+                android:layout_span="3"
+                android:text="TEST3" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin3D1"
+                style="@style/bioList"
+                android:text="T: 5.6C" />
+
+            <TextView
+                android:id="@+id/bin3D2"
+                style="@style/bioList"
+                android:text="HPa: 997" />
+
+            <TextView
+                android:id="@+id/bin3D3"
+                style="@style/bioList"
+                android:text="H.: 39%" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin3D4"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="NO2: 10.1" />
+
+            <TextView
+                android:id="@+id/bin3D5"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="O3: 34.9" />
+
+            <TextView
+                android:id="@+id/bin3D6"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="PM10: 9.8" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bioTitle4"
+                style="@style/bioList"
+                android:layout_span="3"
+                android:text="TEST4" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin4D1"
+                style="@style/bioList"
+                android:text="T: 7.3C" />
+
+            <TextView
+                android:id="@+id/bin4D2"
+                style="@style/bioList"
+                android:text="HPa: 1003" />
+
+            <TextView
+                android:id="@+id/bin4D3"
+                style="@style/bioList"
+                android:text="H.: 54%" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin4D4"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="NO2: 10.6" />
+
+            <TextView
+                android:id="@+id/bin4D5"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="O3: 32.7" />
+
+            <TextView
+                android:id="@+id/bin4D6"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="PM10: 9.4" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bioTitle5"
+                style="@style/bioList"
+                android:layout_span="3"
+                android:text="" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin5D1"
+                style="@style/bioList"
+                android:text="T: 8C" />
+
+            <TextView
+                android:id="@+id/bin5D2"
+                style="@style/bioList"
+                android:text="HPa: 999" />
+
+            <TextView
+                android:id="@+id/bin5D3"
+                style="@style/bioList"
+                android:text="H.: 45%" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin5D4"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="NO2: 10.0" />
+
+            <TextView
+                android:id="@+id/bin5D5"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="O3: 33.1" />
+
+            <TextView
+                android:id="@+id/bin5D6"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="PM10: 8.9" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bioTitle6"
+                style="@style/bioList"
+                android:layout_span="3"
+                android:text="TEST6" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin6D1"
+                style="@style/bioList"
+                android:text="bin6D1" />
+
+            <TextView
+                android:id="@+id/bin6D2"
+                style="@style/bioList"
+                android:text="bin6D2" />
+
+            <TextView
+                android:id="@+id/bin6D3"
+                style="@style/bioList"
+                android:text="bin6D3" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bin6D4"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="bin6D4" />
+
+            <TextView
+                android:id="@+id/bin6D5"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="bin6D5" />
+
+            <TextView
+                android:id="@+id/bin6D6"
+                style="@style/bioList"
+                android:layout_marginBottom="2dp"
+                android:text="bin6D6" />
+
+        </TableRow>
+
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

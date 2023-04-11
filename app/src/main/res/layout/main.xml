@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/buttonNavi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListaProgress"
+    android:background="@color/darkblue">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="341dp"
+        android:layout_height="143dp"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:text="Inteligentny System Zarządzania Wywozem Odpadów"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="34sp"
+        android:textColor="@color/yellow"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="310dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.79">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonBio"
+                android:layout_width="260dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/yellow"
+                android:gravity="center"
+                android:onClick="goToListaBio"
+                android:text="Dane Biometeorologiczne
+"
+                android:textColor="@color/darkblue"
+                android:textSize="20sp"
+                app:cornerRadius="50dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonProgress"
+                android:layout_width="350dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/yellow"
+                android:onClick="goToListaProgress"
+                android:text="Poziom zapełnienia śmietników"
+                android:textColor="@color/darkblue"
+                android:textSize="20sp"
+                app:cornerRadius="50dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonNavigation"
+                android:layout_width="260dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/yellow"
+                android:onClick="goToMapActivity"
+                android:text="Wyznacz trasę odbioru odpadów"
+                android:textColor="@color/darkblue"
+                android:textSize="20sp"
+                app:cornerRadius="50dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonHarmonogram"
+                android:layout_width="260dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/yellow"
+                android:text="Harmonogram wywozu śmieci"
+                android:textColor="@color/darkblue"
+                android:textSize="20sp"
+                android:onClick="goToCallendar"
+                app:cornerRadius="50dp" />
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
